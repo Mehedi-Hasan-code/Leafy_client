@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Forget from "../pages/Forget";
+import Loading from "../components/common/Loading";
 
 export let router = createBrowserRouter([
   {
@@ -12,7 +13,9 @@ export let router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home
+        Component: Home,
+        loader: async () => fetch('http://localhost:3000/active-gardeners'),
+        hydrateFallbackElement: <Loading />
       },
       {
         path: 'signin',

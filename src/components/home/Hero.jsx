@@ -43,6 +43,7 @@ const Hero = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === carouselData.length - 1 ? 0 : prevIndex + 1
       );
+      resetAutoSlide();
       setProgress(0);
     }, 5000);
   }, [carouselData.length]);
