@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "message": "Grow Together",
+    "paragraph": "Join a thriving community of plant lovers and grow your garden with shared wisdom and support.",
+    "backgroundImage": "https://i.imgur.com/A9mSGmX.jpeg",
+    "buttonText": "Learn More",
+    "buttonLink": "/grow-together"
+  },
+  {
+    "id": 2,
+    "message": "Urban Gardening Made Simple",
+    "paragraph": "Turn your balcony or small space into a lush garden with our easy-to-follow guides and resources.",
+    "backgroundImage": "https://i.imgur.com/M9qBYLR.jpeg",
+    "buttonText": "Get Started",
+    "buttonLink": "/urban-gardening"
+  },
+  {
+    "id": 3,
+    "message": "Your Green Journey Starts Here",
+    "paragraph": "Discover how to start your own garden and live more sustainably, one step at a time.",
+    "backgroundImage": "https://i.imgur.com/bHFCBTd.jpeg",
+    "buttonText": "Join Us",
+    "buttonLink": "/green-journey"
+  }
+]
