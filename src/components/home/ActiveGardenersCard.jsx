@@ -4,7 +4,6 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 const ActiveGardenersCard = ({ gardener }) => {
-  console.log(gardener);
   const { name, image, expert_in } = gardener;
   return (
     <div className="h-full flex flex-col border rounded-2xl overflow-hidden p-4 sm:p-6">

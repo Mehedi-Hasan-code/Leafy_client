@@ -3,6 +3,7 @@ import Hero from '../components/home/Hero'
 import FeaturedGardeners from '../components/home/FeaturedGardeners'
 import { useLoaderData } from 'react-router-dom'
 import GetInTouch from '../components/home/GetInTouch'
+import Tips from '../components/home/Tips'
 
 const Home = () => {
   const activeGardeners = useLoaderData()
@@ -12,6 +13,7 @@ const Home = () => {
       <Hero />
       <FeaturedGardeners activeGardeners = {activeGardeners} />
       <GetInTouch />
+      <Tips />
     </div>
   )
 }

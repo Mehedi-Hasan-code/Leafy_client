@@ -2,7 +2,6 @@ import React from 'react';
 import ActiveGardenersCard from './ActiveGardenersCard';
 
 const FeaturedGardeners = ({ activeGardeners }) => {
-  console.log(activeGardeners);
   return (
     <div className="relative w-11/12 mx-auto">
       <h1 className="text-4xl sm:text-6xl text-center">Active Gardeners</h1>

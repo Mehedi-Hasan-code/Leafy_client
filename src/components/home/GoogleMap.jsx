@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  APIProvider,
-  Map,
-  Marker,
-  useMap,
-} from '@vis.gl/react-google-maps';
+import { APIProvider, Map, useMap, Marker } from '@vis.gl/react-google-maps';
 
-const location = { lat: 40.7580, lng: -73.9855 }; // Example: Times Square
+const location = { lat: 40.758, lng: -73.9855 }; // Example: Times Square
 
 // Zoom control buttons using Tailwind
 const ZoomControls = () => {
@@ -46,10 +41,10 @@ const ZoomControls = () => {
 
 const GoogleMap = () => {
   return (
-    <div className="relative w-screen h-screen">
+    <div className="relative bg-red-200">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <Map
-          style={{ width: '50%', height: '50vh' }}
+          style={{ width: '100%', height: '50vh' }}
           defaultCenter={location}
           defaultZoom={15}
           gestureHandling="greedy"
