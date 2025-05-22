@@ -3,9 +3,9 @@ import React from 'react';
 const ShareTip = () => {
   return (
     <div className="w-11/12 mx-auto grow">
-      <h1>Share Tip</h1>
       <div>
         <form className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4">
+        <h1>Share Tip</h1>
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {/* title */}
 

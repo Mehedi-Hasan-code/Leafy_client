@@ -1,5 +1,5 @@
 import { MapPin, Award, Users, Leaf } from 'lucide-react';
-import { GrGrow } from "react-icons/gr";
+import { GrGrow } from 'react-icons/gr';
 
 const GardenersCard = ({ gardener }) => {
   const {
@@ -16,7 +16,7 @@ const GardenersCard = ({ gardener }) => {
   } = gardener;
   console.log(experiences);
   return (
-    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-sm w-full transform hover:scale-105 transition-transform duration-300">
+    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-sm w-full transform hover:scale-105 transition-transform duration-300 flex flex-col">
       {/* Header Section */}
       <div className="relative bg-gradient-to-r from-emerald-400 to-cyan-400 px-8 pt-8 pb-6">
         {/* Status Badge */}
@@ -54,7 +54,7 @@ const GardenersCard = ({ gardener }) => {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6">
+      <div className="px-8 py-6 h-full flex flex-col">
         {/* Expert Badge */}
         <div className="bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl p-4 mb-6 border border-emerald-100">
           <div className="flex items-center gap-3">
@@ -73,12 +73,14 @@ const GardenersCard = ({ gardener }) => {
         {/* experiences */}
         <div className="flex items-center gap-3 bg-gray-50 mb-6 bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl p-4  border border-emerald-100">
           <div className="bg-emerald-500 rounded-full p-2">
-          <GrGrow className="w-4 h-4 text-white" />
+            <GrGrow className="w-4 h-4 text-white" />
           </div>
           <div>
-            <p className="text-emerald-800 font-semibold text-sm">Experiences</p>
+            <p className="text-emerald-800 font-semibold text-sm">
+              Experiences
+            </p>
             {experiences.map((experience, index) => (
-              <p className='text-emerald-600' key={index}>
+              <p className="text-emerald-600" key={index}>
                 {index + 1}. {experience}
               </p>
             ))}
@@ -86,38 +88,40 @@ const GardenersCard = ({ gardener }) => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <div className="flex items-center justify-center mb-2">
-              <Award className="w-5 h-5 text-amber-500" />
+        <div className='h-full flex flex-col justify-end '>
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="bg-gray-50 rounded-xl p-4 text-center">
+              <div className="flex items-center justify-center mb-2">
+                <Award className="w-5 h-5 text-amber-500" />
+              </div>
+              <p className="text-2xl font-bold text-gray-800">
+                {total_shared_tips}
+              </p>
+              <p className="text-gray-600 text-sm font-medium">Tips Shared</p>
             </div>
-            <p className="text-2xl font-bold text-gray-800">
-              {total_shared_tips}
-            </p>
-            <p className="text-gray-600 text-sm font-medium">Tips Shared</p>
+
+            <div className="bg-gray-50 rounded-xl p-4 text-center">
+              <div className="flex items-center justify-center mb-2">
+                <Users className="w-5 h-5 text-blue-500" />
+              </div>
+              <p className="text-2xl font-bold text-gray-800">
+                {experienced_for}+{' '}
+              </p>
+              <p className="text-gray-600 text-sm font-medium">
+                Years of Experience
+              </p>
+            </div>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <div className="flex items-center justify-center mb-2">
-              <Users className="w-5 h-5 text-blue-500" />
+          {/* Location */}
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+            <div className="bg-red-500 rounded-full p-2">
+              <MapPin className="w-4 h-4 text-white" />
             </div>
-            <p className="text-2xl font-bold text-gray-800">
-              {experienced_for}+{' '}
-            </p>
-            <p className="text-gray-600 text-sm font-medium">
-              Years of Experience
-            </p>
-          </div>
-        </div>
-
-        {/* Location */}
-        <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
-          <div className="bg-red-500 rounded-full p-2">
-            <MapPin className="w-4 h-4 text-white" />
-          </div>
-          <div>
-            <p className="text-gray-600 text-sm font-medium">Location</p>
-            <p className="text-gray-800 font-semibold">{location}</p>
+            <div>
+              <p className="text-gray-600 text-sm font-medium">Location</p>
+              <p className="text-gray-800 font-semibold">{location}</p>
+            </div>
           </div>
         </div>
       </div>

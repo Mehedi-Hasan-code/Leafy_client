@@ -40,7 +40,8 @@ export let router = createBrowserRouter([
       },
       {
         path: 'browse-tips',
-        Component: BrowseTips
+        Component: BrowseTips,
+        loader: async () => fetch('http://localhost:3000/public-tips')
       },
       {
         path: 'share-a-garden-tip',
