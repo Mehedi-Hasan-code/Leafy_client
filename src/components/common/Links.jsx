@@ -4,16 +4,19 @@ const Links = () => {
   return (
     <>
       <li>
-        <NavLink to='/home'>Home</NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to=''>Share a Garden Tip</NavLink>
+        <NavLink to="/explore-gardeners">Explore Gardeners</NavLink>
       </li>
       <li>
-        <NavLink to=''>Explore Gardeners</NavLink>
+        <NavLink to="/browse-tips">Browse Tips</NavLink>
       </li>
       <li>
-        <NavLink to=''>My Tips</NavLink>
+        <NavLink to="/share-a-garden-tip">Share a Garden Tip</NavLink>
+      </li>
+      <li>
+        <NavLink to="/my-tips">My Tips</NavLink>
       </li>
     </>
   );
