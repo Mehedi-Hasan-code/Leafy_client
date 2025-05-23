@@ -36,12 +36,14 @@ export let router = createBrowserRouter([
       {
         path: 'explore-gardeners',
         Component: ExploreGardeners,
-        loader: async () => fetch('http://localhost:3000/gardeners')
+        loader: async () => fetch('http://localhost:3000/gardeners'),
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: 'browse-tips',
         Component: BrowseTips,
-        loader: async () => fetch('http://localhost:3000/public-tips')
+        loader: async () => fetch('http://localhost:3000/public-tips'),
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: 'share-a-garden-tip',

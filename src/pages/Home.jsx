@@ -9,7 +9,7 @@ const Home = () => {
   const activeGardeners = useLoaderData()
   
   return (
-    <div>
+    <div className='my-10'>
       <Hero />
       <FeaturedGardeners activeGardeners = {activeGardeners} />
       <GetInTouch />

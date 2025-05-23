@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShareTip = () => {
   return (
-    <div className="w-11/12 mx-auto grow">
+    <div className="w-11/12 mx-auto grow my-10">
       <div>
         <form className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4">
         <h1>Share Tip</h1>

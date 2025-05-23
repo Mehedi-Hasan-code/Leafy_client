@@ -97,11 +97,11 @@ const Hero = () => {
   }
 
   return (
-    <div className="relative min-h-[80vh] text-white overflow-hidden w-11/12 mx-auto">
+    <div className="relative min-h-[80vh] text-white overflow-hidden w-11/12 mx-auto rounded-2xl">
       {/* Progress bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gray-700 z-10">
+      <div className="absolute top-0 left-0 w-full h-[6px] rounded-full overflow-hidden z-10">
         <div
-          className="h-full bg-white transition-all duration-50"
+          className="h-full bg-green-400 transition-all duration-50"
           style={{ width: `${progress}%` }}
         />
       </div>

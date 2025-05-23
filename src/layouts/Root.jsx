@@ -1,15 +1,17 @@
-import Navbar from '../components/common/Navbar'
-import Footer from '../components/common/Footer'
-import { Outlet } from 'react-router-dom'
+import Navbar from '../components/common/Navbar';
+import Footer from '../components/common/Footer';
+import { Outlet } from 'react-router-dom';
 
 const Root = () => {
   return (
-    <div className='flex flex-col min-h-screen max-w-[1440px] mx-auto'>
-      <Navbar />
+    <div className='bg-[#E9EDF4]'>
+      <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto">
+        <Navbar />
         <Outlet />
-      <Footer />
+        <Footer />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;

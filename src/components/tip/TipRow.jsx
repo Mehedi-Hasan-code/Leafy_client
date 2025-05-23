@@ -1,7 +1,7 @@
 import React from 'react';
 import { Eye } from 'lucide-react';
 const TipRow = ({tip}) => {
-  const {image, title, userName, date, category} = tip
+  const {image, title, date, category, difficulty} = tip
   console.log(tip);
   return (
     <tr>
@@ -13,13 +13,13 @@ const TipRow = ({tip}) => {
             </div>
           </div>
           <div>
-            <div className="font-bold">{userName}</div>
+            <div className="font-bold">{title}</div>
             <div className="text-sm opacity-50">{date}</div>
           </div>
         </div>
       </td>
-      <td>{title}</td>
       <td>{category}</td>
+      <td>{difficulty}</td>
       <th>
         <button className="btn"><Eye /></button>
       </th>

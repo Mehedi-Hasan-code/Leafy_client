@@ -8,3 +8,21 @@
   --color-primary: #028355;
   --color-secondary: teal;
 }
+
+ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul li a {
+  padding: 0.3rem 1rem;
+  border-radius: 55px;
+  font-weight: 600;
+}
+
+a.active{
+  background: green;
+  color: white;
+  font-weight: bold;
+}

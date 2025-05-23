@@ -1,10 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Links from './Links';
+import { CircleUser } from 'lucide-react';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
+import { FaLeaf } from 'react-icons/fa';
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => toast.success('LogOut successful'))
+      .catch((err) => console.log(err.message));
+  };
   return (
-    <div className="navbar p-0 bg-base-100 w-11/12 mx-auto">
-      <div className="navbar-start">
+    <div className="flex justify-between items-center p-0 w-11/12 mx-auto mt-4">
+      {/* nav start */}
+      <div className="lg:bg-white px-4 py-4 rounded-full flex items-center">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn lg:hidden">
             <svg
@@ -30,20 +42,54 @@ const Navbar = () => {
             <Links />
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">LEAFY</a>
+        <Link to="/" className="space-x-2 lg:space-x-1 hidden lg:block">
+          <FaLeaf fill='green' className="inline" />
+          <span className="font-bold text-green-700">LEAFY</span>
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      {/* nav center */}
+      <div className="hidden lg:flex bg-white rounded-full px-3 py-3">
+        <ul className="menu-horizontal">
           <Links />
         </ul>
       </div>
-      <div className="navbar-end">
-        <Link to={''} className="btn">
-          LogIn
-        </Link>
-        <Link to={''} className="btn">
-          SignUp
-        </Link>
+      {/* nav end */}
+      <div className="px-3 py-3 bg-white rounded-full">
+        {user ? (
+          <div className="flex items-center gap-2">
+            <div>
+              {user.photoURL ? (
+                <img
+                  className="w-[34px] h-[34px] rounded-full object-cover"
+                  src={user.photoURL}
+                />
+              ) : (
+                <div className="bg-emerald-400 p-1 rounded-full">
+                  <CircleUser size={28} className="text-white" />{' '}
+                </div>
+              )}
+            </div>
+            {/*  */}
+            <button onClick={handleSignOut} className="btn hidden">
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <div className="flex gap-4">
+            <ul className="flex">
+              <li className="flex">
+                <NavLink to="/signin" className="">
+                  LogIn
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/signup" className="">
+                  SignUp
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

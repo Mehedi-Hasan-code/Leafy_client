@@ -5,16 +5,16 @@ import TipRow from '../components/Tip/TipRow'
 const BrowseTips = () => {
   const tips = useLoaderData()
   return (
-    <div className='w-11/12 mx-auto grow'>
+    <div className='w-11/12 mx-auto grow my-10'>
       <div>
         <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
       <tr>
-        <th>Image</th>
         <th>Title</th>
         <th>Category</th>
+        <th>Difficulty</th>
         <th>Details</th>
       </tr>
     </thead>

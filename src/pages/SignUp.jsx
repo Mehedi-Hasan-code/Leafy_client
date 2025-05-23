@@ -13,7 +13,8 @@ const SignUp = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasLowerCase, setHasLowerCase] = useState(false);
-  const [hasSixCharacter, setHasSixCharacter] = useState(false);
+  const [hasEightCharacter, setHasEightCharacter] = useState(false);
+  const [hasSpecialCharacter, setHasSpecialCharacter] = useState(false)
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -25,12 +26,13 @@ const SignUp = () => {
     // Check password requirements
     setHasUpperCase(/[A-Z]/.test(newPassword));
     setHasLowerCase(/[a-z]/.test(newPassword));
-    setHasSixCharacter(newPassword.length >= 6);
+    setHasSpecialCharacter(/[!@#$%^&*(),.?":{}|<>]/.test(newPassword))
+    setHasEightCharacter(newPassword.length >= 8);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!hasUpperCase || !hasLowerCase || !hasSixCharacter) {
+    if (!hasUpperCase || !hasLowerCase || !hasEightCharacter || !hasSpecialCharacter) {
       setPasswordError(true);
       return;
     }
@@ -152,17 +154,31 @@ const SignUp = () => {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {hasSixCharacter ? (
+                  {hasEightCharacter ? (
                     <FaCheckCircle fill="green" />
                   ) : (
                     <FaRegCircleXmark fill="red" />
                   )}
                   <p
                     className={
-                      hasSixCharacter ? "text-green-500" : "text-red-500"
+                      hasEightCharacter ? "text-green-500" : "text-red-500"
                     }
                   >
-                    Passwords Length must be at least 6 characters
+                    Passwords Length must be at least 8 characters
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  {hasSpecialCharacter ? (
+                    <FaCheckCircle fill="green" />
+                  ) : (
+                    <FaRegCircleXmark fill="red" />
+                  )}
+                  <p
+                    className={
+                      hasSpecialCharacter ? "text-green-500" : "text-red-500"
+                    }
+                  >
+                    Passwords must contain a special character
                   </p>
                 </div>
               </div>

@@ -4,7 +4,6 @@ import { GoArrowUpRight } from 'react-icons/go';
 
 const TipCard = ({ tip }) => {
   const { image, date, authorImage, userName, likes, title } = tip;
-  console.log(tip);
   return (
     <div className="border p-4 rounded-2xl grid sm:grid-cols-[1fr_1.5fr] gap-4 items-center">
       <div className="relative">
