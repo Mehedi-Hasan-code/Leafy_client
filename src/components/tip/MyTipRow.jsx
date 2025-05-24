@@ -15,8 +15,8 @@ const MyTipRow = ({ tip, onDelete }) => {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#059669',
+      cancelButtonColor: '#dc2626',
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
@@ -48,33 +48,35 @@ const MyTipRow = ({ tip, onDelete }) => {
     });
   };
   return (
-    <tr>
-      <td>
-        <div className="flex items-center gap-3">
+    <tr className="hover:bg-emerald-50/50 transition-colors duration-300">
+      <td className="py-4">
+        <div className="flex items-center gap-4">
           <div className="avatar">
-            <div className="mask mask-squircle h-12 w-12 sm:w-16 sm:h-16">
-              <img src={image} alt="Tip Image" />
+            <div className="mask mask-squircle h-16 w-16 border-2 border-emerald-100">
+              <img src={image} alt="Tip Image" className="object-cover" />
             </div>
           </div>
           <div>
-            <div className="font-bold whitespace-nowrap">{title}</div>
-            <div className="text-sm opacity-50">{date}</div>
+            <div className="font-semibold text-emerald-800 whitespace-nowrap">
+              {title}
+            </div>
+            <div className="text-sm text-emerald-600">{date}</div>
           </div>
         </div>
       </td>
-      <td>{availability}</td>
-      <td>{category}</td>
-      <td>{difficulty}</td>
+      <td className="text-emerald-700 font-medium">{availability}</td>
+      <td className="text-emerald-700 font-medium">{category}</td>
+      <td className="text-emerald-700 font-medium">{difficulty}</td>
       <th>
-        <div className="join join-vertical space-y-1">
+        <div className="flex gap-2">
           <button
-            className="btn btn-sm join-item"
+            className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300"
             onClick={() => navigate(`/update-tip/${_id}`)}
           >
             Update
           </button>
           <button
-            className="btn btn-sm join-item"
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300"
             onClick={() => handleDelete(_id)}
           >
             Delete

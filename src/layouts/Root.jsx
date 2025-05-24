@@ -4,13 +4,13 @@ import { Outlet } from 'react-router-dom';
 
 const Root = () => {
   return (
-    <div className='bg-[#E9EDF4]'>
+
       <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto">
         <Navbar />
         <Outlet />
         <Footer />
       </div>
-    </div>
+
   );
 };
 
