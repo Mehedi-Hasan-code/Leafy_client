@@ -6,6 +6,7 @@ import SignUp from '../pages/SignUp';
 import Forget from '../pages/Forget';
 import Loading from '../components/common/Loading';
 import ShareTip from '../pages/ShareTip';
+import PrivateRoute from '../Private/PrivateRoute'
 import ExploreGardeners from '../pages/ExploreGardeners';
 import BrowseTips from '../pages/BrowseTips';
 import MyTips from '../pages/MyTips';
@@ -49,19 +50,19 @@ export let router = createBrowserRouter([
       },
       {
         path: 'share-a-garden-tip',
-        Component: ShareTip,
+        element: <PrivateRoute><ShareTip></ShareTip></PrivateRoute>
       },
       {
         path: 'my-tips',
-        Component: MyTips,
+        element: <PrivateRoute><MyTips></MyTips></PrivateRoute>
       },
       {
         path: 'update-tip/:id',
-        Component: Update,
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
       },
       {
         path: 'tip-details/:id',
-        Component: TipDetails,
+        element: <PrivateRoute><TipDetails></TipDetails></PrivateRoute>,
         loader: async ({ params }) =>
           fetch(`http://localhost:3000/tip/${params.id}`),
         hydrateFallbackElement: <Loading />,

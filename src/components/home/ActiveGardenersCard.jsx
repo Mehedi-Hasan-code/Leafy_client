@@ -19,6 +19,7 @@ const ActiveGardenersCard = ({ gardener }) => {
         <h1 className="text-xl font-bold text-green-800 hover:text-green-600 transition-colors duration-300">
           {name}
         </h1>
+        <p className="font-semibold text-green-700">Status: Active</p>
         <p className="font-semibold text-green-700">{expert_in}</p>
         <div className="flex justify-start gap-3 my-4">
           <div className="bg-green-50 p-2 rounded-full hover:bg-green-200 transition-colors duration-300">

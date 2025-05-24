@@ -3,7 +3,7 @@
   --breakpoint-nav: 1155px;
 }
 @plugin "daisyui" {
-  themes: light;
+  themes: light --default, dark;
 }
 @plugin "daisyui/theme" {
   name: 'light';

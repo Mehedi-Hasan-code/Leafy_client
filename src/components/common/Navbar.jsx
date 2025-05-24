@@ -3,12 +3,14 @@ import Links from './Links';
 import { CircleUser } from 'lucide-react';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import { toast } from 'react-toastify';
 import { FaLeaf } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const { isDark, toggleTheme } = useTheme();
   const [showLogout, setShowLogout] = useState(false);
 
   // Close logout menu when clicking outside
@@ -37,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center p-0 w-11/12 mx-auto mt-4">
+    <div className="flex justify-between items-center p-0 w-11/12 mx-auto py-6">
       {/* nav start */}
       <div className="nav:px-6 nav:py-4 rounded-full flex items-center shadow-md hover:shadow-lg transition-shadow duration-300">
         <div className="dropdown">
@@ -114,11 +116,11 @@ const Navbar = () => {
         </ul>
       </div>
       {/* nav end */}
-      <div className="px-2 py-1 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 flex gap-4">
+      <div className="px-2 py-1 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 flex gap-4 items-center">
         {/*  */}
         <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" />
+          <input type="checkbox" checked={isDark} onChange={toggleTheme} />
 
           {/* sun icon */}
           <svg
@@ -196,7 +198,7 @@ const Navbar = () => {
                   to="/signin"
                   className="text-emerald-700 font-semibold hover:text-emerald-800 transition-colors duration-300"
                 >
-                  LogIn
+                  SignIn
                 </NavLink>
               </li>
               <li>

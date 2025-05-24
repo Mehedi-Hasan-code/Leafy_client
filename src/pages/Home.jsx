@@ -12,7 +12,7 @@ const Home = () => {
   const activeGardeners = useLoaderData();
 
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+    <div className="px-4 sm:px-6 lg:px-8 py-12 space-y-20">
       <Hero />
       <FeaturedGardeners activeGardeners={activeGardeners} />
       <Tips />
