@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useLocation } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Forget = () => {
+  useDocumentTitle('Forget Password')
   const { forgetPassword } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();

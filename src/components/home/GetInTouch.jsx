@@ -10,7 +10,7 @@ const GetInTouch = () => {
       <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">
         Get In Touch
         <Typewriter
-          words={['With Us', 'From Anywhere']}
+          words={[' With Us', ' From Anywhere']}
           loop={0}
           cursor
           cursorStyle="_"

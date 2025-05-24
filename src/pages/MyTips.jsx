@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Loading from '../components/common/Loading';
 import MyTipRow from '../components/tip/MyTipRow';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const MyTips = () => {
+  useDocumentTitle('My Tips')
   const { user, isUserLoading } = useContext(AuthContext);
   const [tips, setTips] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -54,7 +56,7 @@ const MyTips = () => {
 
   if (!user) {
     return (
-      <div className="w-11/12 mx-auto grow">
+      <div className="w-11/12 mx-auto grow flex justify-center items-center">
         Please log in to view your tips
       </div>
     );
@@ -71,8 +73,9 @@ const MyTips = () => {
   return (
     <div className="w-11/12 mx-auto grow my-10">
       <div>
+        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">My Tips</h1>
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table border border-base-300">
             {/* head */}
             <thead>
               <tr>

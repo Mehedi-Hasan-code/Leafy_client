@@ -41,10 +41,10 @@ const ZoomControls = () => {
 
 const GoogleMap = () => {
   return (
-    <div className="relative bg-emerald-50">
+    <div className="relative bg-emerald-50 h-full min-h-[400px] w-full">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <Map
-          style={{ width: '100%', height: '50vh' }}
+          style={{ width: '100%', height: '100%', minHeight: '400px' }}
           defaultCenter={location}
           defaultZoom={15}
           gestureHandling="greedy"

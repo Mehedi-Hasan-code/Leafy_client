@@ -2,8 +2,8 @@ import React from 'react';
 
 const SendMessage = () => {
   return (
-    <div className="bg-emerald-50 px-6 py-8">
-      <h1 className="text-2xl font-semibold text-emerald-800 mb-6">
+    <div className="bg-emerald-50 px-2 sm:px-6 py-8">
+      <h1 className="text-2xl font-semibold text-emerald-800 mb-6 text-center">
         Send us a Message
       </h1>
       <form className="flex flex-col h-full space-y-4">

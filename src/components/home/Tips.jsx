@@ -12,8 +12,9 @@ const Tips = () => {
   return (
     <div className="w-full bg-white rounded-3xl p-8 shadow-lg">
       <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">
+        The Ultimate
         <Typewriter
-          words={['Tips, Trends & Inspiration']}
+          words={['Tips', 'Trends', '& Inspiration']}
           loop={0}
           cursor
           cursorStyle="_"

@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import Loading from '../components/common/Loading';
 import Loader from '../components/common/Loader'
 import { toast } from 'react-toastify';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Update = () => {
+  useDocumentTitle('Update Tip')
   const { id } = useParams();
   const [tip, setTip] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,7 +84,7 @@ const Update = () => {
           onSubmit={handleSubmit}
           className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4"
         >
-          <h1>Update Tip</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-center m-12 text-green-600">Update Tip</h1>
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {/* title */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4 ">
@@ -227,7 +229,7 @@ const Update = () => {
               />
             </fieldset>
 
-            <button className="btn sm:col-span-2" type="submit">
+            <button className="btn sm:col-span-2 bg-green-600 text-white font-bold tracking-widest" type="submit">
               {
                 showLoader ? <Loader /> : 'Submit'
               }

@@ -1,30 +1,21 @@
 import React from 'react';
 import ActiveGardenersCard from './ActiveGardenersCard';
-import { Typewriter } from 'react-simple-typewriter';
-
 const FeaturedGardeners = ({ activeGardeners }) => {
   // Ensure activeGardeners is an array
   const gardeners = Array.isArray(activeGardeners) ? activeGardeners : [];
 
   return (
-    <div className="relative w-11/12 mx-auto">
-      <h1 className="text-4xl sm:text-6xl text-center">
-        
-      <Typewriter
-              words={['Active GardenersCard']}
-              loop={0}
-              cursor
-              cursorStyle='_'
-              typeSpeed={50}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
-      </h1>
-      {/* flex container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {gardeners.map((gardener) => (
-          <ActiveGardenersCard key={gardener._id} gardener={gardener} />
-        ))}
+    <div className="relative py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-green-50 rounded-2xl shadow-lg">
+      <div>
+        <h1 className="text-4xl sm:text-6xl text-center font-bold text-green-800 mb-12">
+          Meet Our Gardeners
+        </h1>
+        {/* grid container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          {gardeners.map((gardener) => (
+            <ActiveGardenersCard key={gardener._id} gardener={gardener} />
+          ))}
+        </div>
       </div>
     </div>
   );

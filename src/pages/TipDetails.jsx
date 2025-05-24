@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, Calendar, Leaf, Share2, Bookmark } from 'lucide-react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const TipDetails = () => {
   const data = useLoaderData();
@@ -19,6 +20,7 @@ const TipDetails = () => {
     likes: initialLikes,
     _id,
   } = data;
+  useDocumentTitle(title)
   const [likes, setLikes] = useState(initialLikes || 0);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -69,9 +71,9 @@ const TipDetails = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="w-11/12 mx-auto grow">
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="mx-auto px-4 py-8">
         {/* Article Header */}
         <article className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
           {/* Hero Image */}

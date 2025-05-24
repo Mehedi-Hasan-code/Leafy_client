@@ -5,8 +5,10 @@ import { FaCheckCircle } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/common/Loader";
 import { toast } from "react-toastify";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const SignUp = () => {
+  useDocumentTitle('SignUp')
   const { createUser, updateUser, signInWithGoogle, setUser } =
     useContext(AuthContext);
   const [password, setPassword] = useState("");
@@ -85,7 +87,7 @@ const SignUp = () => {
     <div className="grow flex justify-center my-6 items-center w-11/12 mx-auto">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
-          <h1 className="text-2xl font-bold text-center">SignUp Now !</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-center text-green-600">SignUp Now !</h1>
           <form className="fieldset" onSubmit={handleSubmit}>
             {/* name */}
             <label className="label">Name</label>
@@ -183,7 +185,7 @@ const SignUp = () => {
                 </div>
               </div>
             )}
-            <button type="submit" className="btn btn-neutral mt-4">
+            <button type="submit" className="btn bg-green-600 text-white font-bold tracking-widest mt-4">
               {isLoading ? <Loader /> : "SignUp"}
             </button>
             {errorMessage && (

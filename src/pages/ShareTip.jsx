@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Loader from '../components/common/Loader';
 import { toast } from 'react-toastify';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 const ShareTip = () => {
+  useDocumentTitle('Share A Tip')
   const { user } = useContext(AuthContext);
   
   // Function to get date
@@ -68,7 +70,7 @@ const ShareTip = () => {
           onSubmit={handleSubmit}
           className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4"
         >
-          <h1>Share Tip</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-center m-12 text-emerald-800">Share A Tip</h1>
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {/* title */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4 ">
@@ -189,7 +191,7 @@ const ShareTip = () => {
               />
             </fieldset>
 
-            <button className="btn sm:col-span-2" type="submit">
+            <button className="btn sm:col-span-2 bg-green-600 text-white tracking-widest font-bold" type="submit">
               {
                 showLoader ? <Loader />:'Submit'
               }

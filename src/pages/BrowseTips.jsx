@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import TipRow from '../components/Tip/TipRow';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const BrowseTips = () => {
+  useDocumentTitle('Top tips')
   const allTips = useLoaderData();
   const [selectedDifficulty, setSelectedDifficulty] = useState('');
 
@@ -16,6 +18,7 @@ const BrowseTips = () => {
   return (
     <div className="w-11/12 mx-auto grow my-10">
       <div>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-green-600">Top Tips</h1>
         {/* Filter Section */}
         <div className="mb-6">
           <select

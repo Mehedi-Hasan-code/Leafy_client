@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/common/Loading";
 import { toast } from "react-toastify";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const SignIn = () => {
+  useDocumentTitle('SingIn')
   const { signInByEmailAndPassword, signInWithGoogle, setUser } =
     useContext(AuthContext);
   const [loading, setIsLoading] = useState(false);
@@ -55,7 +57,7 @@ const SignIn = () => {
     <div className="grow flex justify-center items-center my-6 w-11/12 mx-auto">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
-          <h1 className="text-2xl text-center font-bold my-2">SignIn</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-center  text-green-600">SignIn</h1>
           <form onSubmit={handleSubmit} className="fieldset">
             <label className="label">Email</label>
             <input
@@ -79,7 +81,7 @@ const SignIn = () => {
             {errorMessage && (
               <p className="text-red-500 text-center mt-2">{errorMessage}</p>
             )}
-            <button className="btn btn-neutral mt-4">
+            <button className="btn bg-green-600 text-white font-bold tracking-widest mt-4">
               {loading ? <Loader /> : "SingIn"}
             </button>
           </form>
