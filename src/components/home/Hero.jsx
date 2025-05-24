@@ -50,7 +50,7 @@ const Hero = () => {
   }, [carouselData.length]);
 
   useEffect(() => {
-    fetch('CarouselData.json')
+    fetch('/CarouselData.json')
       .then((res) => res.json())
       .then((data) => {
         setCarouselData(data);

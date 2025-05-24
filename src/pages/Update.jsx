@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../components/common/Loading';
-import Loader from '../components/common/Loader'
+import Loader from '../components/common/Loader';
 import { toast } from 'react-toastify';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Update = () => {
-  useDocumentTitle('Update Tip')
+  useDocumentTitle('Update Tip');
   const { id } = useParams();
   const [tip, setTip] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [showLoader, setShowLoader] = useState(false)
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tip/${id}`)
+    fetch(`https://leafy-server.vercel.app/tip/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTip(data);
@@ -52,29 +52,29 @@ const Update = () => {
   } = tip;
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setShowLoader(true)
-    const form = e.target
-    const formData = new FormData(form)
-    const updateData = Object.fromEntries(formData.entries())
-    fetch(`http://localhost:3000/tip/${_id}`, {
-      method: 'PUT', 
+    e.preventDefault();
+    setShowLoader(true);
+    const form = e.target;
+    const formData = new FormData(form);
+    const updateData = Object.fromEntries(formData.entries());
+    fetch(`https://leafy-server.vercel.app/tip/${_id}`, {
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updateData)
+      body: JSON.stringify(updateData),
     })
-      .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if(data.modifiedCount > 0) {
-            toast.success('Data Updated')
-          } else{
-            toast.error('No data updated')
-          }
-        })
-          .catch(err => console.log(err))
-          .finally(() => setShowLoader(false))
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success('Data Updated');
+        } else {
+          toast.error('No data updated');
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setShowLoader(false));
   };
 
   return (
@@ -84,7 +84,9 @@ const Update = () => {
           onSubmit={handleSubmit}
           className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4"
         >
-          <h1 className="text-3xl sm:text-4xl font-bold text-center m-12 text-green-600">Update Tip</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-center m-12 text-green-600">
+            Update Tip
+          </h1>
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {/* title */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4 ">
@@ -121,7 +123,9 @@ const Update = () => {
                 required
                 defaultValue={difficulty}
               >
-                <option disabled value="">Select Difficulty Level</option>
+                <option disabled value="">
+                  Select Difficulty Level
+                </option>
                 <option value="Easy">Easy</option>
                 <option value="Medium">Medium</option>
                 <option value="Hard">Hard</option>
@@ -229,11 +233,11 @@ const Update = () => {
               />
             </fieldset>
 
-            <button className="btn sm:col-span-2 bg-green-600 text-white font-bold tracking-widest" type="submit">
-              {
-                showLoader ? <Loader /> : 'Submit'
-              }
-              
+            <button
+              className="btn sm:col-span-2 bg-green-600 text-white font-bold tracking-widest"
+              type="submit"
+            >
+              {showLoader ? <Loader /> : 'Submit'}
             </button>
           </div>
         </form>

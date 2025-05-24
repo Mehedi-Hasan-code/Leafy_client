@@ -76,9 +76,9 @@ const Navbar = () => {
                   <NavLink
                     to="/signin"
                     className={({ isActive }) =>
-                      `px-4 py-2 rounded-lg transition-colors duration-300 ${
+                      `px-4 py-2 rounded-full transition-colors duration-300 ${
                         isActive
-                          ? 'text-emerald-700 font-semibold bg-emerald-50'
+                          ? 'text-white font-semibold bg-green-600'
                           : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
                       }`
                     }
@@ -90,9 +90,9 @@ const Navbar = () => {
                   <NavLink
                     to="/signup"
                     className={({ isActive }) =>
-                      `px-4 py-2 rounded-lg transition-colors duration-300 ${
+                      `px-4 py-2 rounded-full transition-colors duration-300 ${
                         isActive
-                          ? 'text-emerald-700 font-semibold bg-emerald-50'
+                          ? 'text-white font-semibold bg-green-600'
                           : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
                       }`
                     }
@@ -178,12 +178,12 @@ const Navbar = () => {
                   </div>
                   {showLogout && (
                     <div className="absolute right-0 mt-2 z-50">
-                      <button
+                      <NavLink
                         onClick={handleSignOut}
                         className="shadow-lg rounded-xl px-6 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors duration-300"
                       >
                         Logout
-                      </button>
+                      </NavLink>
                     </div>
                   )}
                 </div>
@@ -196,7 +196,13 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/signin"
-                  className="text-emerald-700 font-semibold hover:text-emerald-800 transition-colors duration-300"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full transition-colors duration-300 ${
+                      isActive
+                        ? 'text-white font-semibold bg-green-600'
+                        : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
+                    }`
+                  }
                 >
                   SignIn
                 </NavLink>
@@ -204,7 +210,13 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/signup"
-                  className="text-emerald-700 font-semibold hover:text-emerald-800 transition-colors duration-300"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full transition-colors duration-300 ${
+                      isActive
+                        ? 'text-white font-semibold bg-green-600'
+                        : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
+                    }`
+                  }
                 >
                   SignUp
                 </NavLink>

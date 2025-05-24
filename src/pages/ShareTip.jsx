@@ -4,9 +4,9 @@ import Loader from '../components/common/Loader';
 import { toast } from 'react-toastify';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 const ShareTip = () => {
-  useDocumentTitle('Share A Tip')
+  useDocumentTitle('Share A Tip');
   const { user } = useContext(AuthContext);
-  
+
   // Function to get date
   const getDate = (date) => {
     const months = [
@@ -28,11 +28,11 @@ const ShareTip = () => {
     const year = date.getFullYear();
     return `${day} ${month}, ${year}`;
   };
-  const [showLoader, setShowLoader] = useState(false)
+  const [showLoader, setShowLoader] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowLoader(true)
+    setShowLoader(true);
     const currentDate = getDate(new Date());
     const form = e.target;
     const formData = new FormData(form);
@@ -44,23 +44,23 @@ const ShareTip = () => {
       likes: 0,
     };
     console.log(tipData);
-    fetch('http://localhost:3000/tips', {
+    fetch('https://leafy-server.vercel.app/tips', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(tipData)
+      body: JSON.stringify(tipData),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.insertedId){
-        toast.success('Tip Shared Successful')
-      } else{
-        toast.error('Tip Shared Failed')
-      }
-    })
-    .catch(err => console.log(err))
-    .finally(() => setShowLoader(false))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success('Tip Shared Successful');
+        } else {
+          toast.error('Tip Shared Failed');
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setShowLoader(false));
   };
 
   return (
@@ -70,7 +70,9 @@ const ShareTip = () => {
           onSubmit={handleSubmit}
           className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold text-center m-12 text-emerald-800">Share A Tip</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-center m-12 text-emerald-800">
+            Share A Tip
+          </h1>
           <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {/* title */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-2 sm:p-4 ">
@@ -191,11 +193,11 @@ const ShareTip = () => {
               />
             </fieldset>
 
-            <button className="btn sm:col-span-2 bg-green-600 text-white tracking-widest font-bold" type="submit">
-              {
-                showLoader ? <Loader />:'Submit'
-              }
-              
+            <button
+              className="btn sm:col-span-2 bg-green-600 text-white tracking-widest font-bold"
+              type="submit"
+            >
+              {showLoader ? <Loader /> : 'Submit'}
             </button>
           </div>
         </form>

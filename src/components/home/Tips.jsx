@@ -6,7 +6,7 @@ const Tips = () => {
   const [homeTips, setHomeTips] = useState([]);
   console.log(homeTips);
   useEffect(() => {
-    fetch('http://localhost:3000/home-tips')
+    fetch('https://leafy-server.vercel.app/home-tips')
       .then((res) => res.json())
       .then((data) => {
         const sortedTips = [...data].sort((a, b) => b.likes - a.likes);

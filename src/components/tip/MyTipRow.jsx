@@ -20,7 +20,7 @@ const MyTipRow = ({ tip, onDelete }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tip/${id}`, {
+        fetch(`https://leafy-server.vercel.app/tip/${id}`, {
           method: 'DELETE',
         })
           .then((res) => {

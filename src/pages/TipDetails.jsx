@@ -20,7 +20,7 @@ const TipDetails = () => {
     likes: initialLikes,
     _id,
   } = data;
-  useDocumentTitle(title)
+  useDocumentTitle(title);
   const [likes, setLikes] = useState(initialLikes || 0);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -30,7 +30,7 @@ const TipDetails = () => {
     const newLikesCount = newLikeStatus ? likes + 1 : likes - 1;
 
     // Update in database
-    fetch(`http://localhost:3000/tip/${_id}`, {
+    fetch(`https://leafy-server.vercel.app/tip/${_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

@@ -22,7 +22,20 @@ export let router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: async () => fetch('http://localhost:3000/active-gardeners'),
+        loader: async () => {
+          try {
+            const response = await fetch(
+              'https://leafy-server.vercel.app/active-gardeners'
+            );
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          } catch (error) {
+            console.error('Error fetching active gardeners:', error);
+            throw error;
+          }
+        },
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -40,13 +53,39 @@ export let router = createBrowserRouter([
       {
         path: 'explore-gardeners',
         Component: ExploreGardeners,
-        loader: async () => fetch('http://localhost:3000/gardeners'),
+        loader: async () => {
+          try {
+            const response = await fetch(
+              'https://leafy-server.vercel.app/gardeners'
+            );
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          } catch (error) {
+            console.error('Error fetching gardeners:', error);
+            throw error;
+          }
+        },
         hydrateFallbackElement: <Loading />,
       },
       {
         path: 'browse-tips',
         Component: BrowseTips,
-        loader: async () => fetch('http://localhost:3000/public-tips'),
+        loader: async () => {
+          try {
+            const response = await fetch(
+              'https://leafy-server.vercel.app/public-tips'
+            );
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          } catch (error) {
+            console.error('Error fetching public tips:', error);
+            throw error;
+          }
+        },
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -82,8 +121,20 @@ export let router = createBrowserRouter([
           </PrivateRoute>
         ),
         errorElement: <NotFound></NotFound>,
-        loader: async ({ params }) =>
-          fetch(`http://localhost:3000/tip/${params.id}`),
+        loader: async ({ params }) => {
+          try {
+            const response = await fetch(
+              `https://leafy-server.vercel.app/tip/${params.id}`
+            );
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          } catch (error) {
+            console.error('Error fetching tip details:', error);
+            throw error;
+          }
+        },
         hydrateFallbackElement: <Loading />,
       },
       {

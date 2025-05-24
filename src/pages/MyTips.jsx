@@ -5,7 +5,7 @@ import MyTipRow from '../components/tip/MyTipRow';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const MyTips = () => {
-  useDocumentTitle('My Tips')
+  useDocumentTitle('My Tips');
   const { user, isUserLoading } = useContext(AuthContext);
   const [tips, setTips] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const MyTips = () => {
   const refreshTips = () => {
     if (!user) return;
 
-    fetch(`http://localhost:3000/my-tips/${user.email}`)
+    fetch(`https://leafy-server.vercel.app/my-tips/${user.email}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch tips');
@@ -73,7 +73,9 @@ const MyTips = () => {
   return (
     <div className="w-11/12 mx-auto grow my-10">
       <div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">My Tips</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">
+          My Tips
+        </h1>
         <div className="overflow-x-auto">
           <table className="table border border-base-300">
             {/* head */}
