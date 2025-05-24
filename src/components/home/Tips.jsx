@@ -4,17 +4,21 @@ import { Typewriter } from 'react-simple-typewriter';
 
 const Tips = () => {
   const [homeTips, setHomeTips] = useState([]);
+  console.log(homeTips);
   useEffect(() => {
     fetch('http://localhost:3000/home-tips')
       .then((res) => res.json())
-      .then((data) => setHomeTips(data));
+      .then((data) => {
+        const sortedTips = [...data].sort((a, b) => b.likes - a.likes);
+        setHomeTips(sortedTips);
+      });
   }, []);
   return (
     <div className="w-full bg-white rounded-3xl p-8 shadow-lg">
       <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-emerald-800">
         The Ultimate
         <Typewriter
-          words={['Tips', 'Trends', '& Inspiration']}
+          words={[' Tips', ' Trends', ' & Inspiration']}
           loop={0}
           cursor
           cursorStyle="_"

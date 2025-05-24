@@ -66,6 +66,40 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-white rounded-xl z-1 mt-3 w-52 p-4 shadow-lg border border-emerald-100"
           >
             <Links />
+            {user ? (
+              ''
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/signin"
+                    className={({ isActive }) =>
+                      `px-4 py-2 rounded-lg transition-colors duration-300 ${
+                        isActive
+                          ? 'text-emerald-700 font-semibold bg-emerald-50'
+                          : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
+                      }`
+                    }
+                  >
+                    SignIn
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/signup"
+                    className={({ isActive }) =>
+                      `px-4 py-2 rounded-lg transition-colors duration-300 ${
+                        isActive
+                          ? 'text-emerald-700 font-semibold bg-emerald-50'
+                          : 'text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50'
+                      }`
+                    }
+                  >
+                    SignUp
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link to="/" className="space-x-2 nav:space-x-1 hidden nav:block">
@@ -131,7 +165,7 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="flex gap-6">
+          <div className="hidden nav:flex gap-6 ">
             <ul className="flex gap-6">
               <li>
                 <NavLink
