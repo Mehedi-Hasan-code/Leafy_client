@@ -6,12 +6,13 @@ import SignUp from '../pages/SignUp';
 import Forget from '../pages/Forget';
 import Loading from '../components/common/Loading';
 import ShareTip from '../pages/ShareTip';
-import PrivateRoute from '../Private/PrivateRoute'
+import PrivateRoute from '../Private/PrivateRoute';
 import ExploreGardeners from '../pages/ExploreGardeners';
 import BrowseTips from '../pages/BrowseTips';
 import MyTips from '../pages/MyTips';
 import Update from '../pages/Update';
 import TipDetails from '../pages/TipDetails';
+import NotFound from '../pages/NotFound';
 
 export let router = createBrowserRouter([
   {
@@ -50,22 +51,44 @@ export let router = createBrowserRouter([
       },
       {
         path: 'share-a-garden-tip',
-        element: <PrivateRoute><ShareTip></ShareTip></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ShareTip></ShareTip>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'my-tips',
-        element: <PrivateRoute><MyTips></MyTips></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyTips></MyTips>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'update-tip/:id',
-        element: <PrivateRoute><Update></Update></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Update></Update>
+          </PrivateRoute>
+        ),
+        errorElement: <NotFound></NotFound>,
       },
       {
         path: 'tip-details/:id',
-        element: <PrivateRoute><TipDetails></TipDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <TipDetails></TipDetails>
+          </PrivateRoute>
+        ),
+        errorElement: <NotFound></NotFound>,
         loader: async ({ params }) =>
           fetch(`http://localhost:3000/tip/${params.id}`),
         hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: '*',
+        Component: NotFound,
       },
     ],
   },
