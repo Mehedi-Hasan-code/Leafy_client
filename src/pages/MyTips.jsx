@@ -7,6 +7,32 @@ const MyTips = () => {
   const { user, isUserLoading } = useContext(AuthContext);
   const [tips, setTips] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const refreshTips = () => {
+    if (!user) return;
+
+    fetch(`http://localhost:3000/my-tips/${user.email}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch tips');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setTips(data);
+        } else {
+          setTips([]);
+          setError('Invalid data format received');
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching tips:', err);
+        setError('Failed to load tips');
+        setTips([]);
+      });
+  };
 
   useEffect(() => {
     if (isUserLoading) {
@@ -18,17 +44,8 @@ const MyTips = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/my-tips/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTips(data);
-        console.log(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-      });
+    refreshTips();
+    setIsLoading(false);
   }, [user, isUserLoading]);
 
   if (isUserLoading || isLoading) {
@@ -39,6 +56,14 @@ const MyTips = () => {
     return (
       <div className="w-11/12 mx-auto grow">
         Please log in to view your tips
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-11/12 mx-auto grow">
+        <div className="text-red-500">{error}</div>
       </div>
     );
   }
@@ -59,9 +84,17 @@ const MyTips = () => {
               </tr>
             </thead>
             <tbody>
-              {tips.map((tip) => (
-                <MyTipRow tip={tip} key={tip._id} />
-              ))}
+              {Array.isArray(tips) && tips.length > 0 ? (
+                tips.map((tip) => (
+                  <MyTipRow key={tip._id} tip={tip} onDelete={refreshTips} />
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center">
+                    No tips found
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

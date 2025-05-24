@@ -1,7 +1,9 @@
 import React from 'react';
 import { Eye } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 const TipRow = ({tip}) => {
-  const {image, title, date, category, difficulty} = tip
+  const navigate = useNavigate()
+  const {image, title, date, category, difficulty, _id, likes} = tip
   return (
     <tr>
       <td>
@@ -17,10 +19,11 @@ const TipRow = ({tip}) => {
           </div>
         </div>
       </td>
+      <td>{likes}</td>
       <td>{category}</td>
       <td>{difficulty}</td>
       <th>
-        <button className="btn"><Eye /></button>
+        <button onClick={() => navigate(`/tip-details/${_id}`) } className="btn"><Eye /></button>
       </th>
     </tr>
   );

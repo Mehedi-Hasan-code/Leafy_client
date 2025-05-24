@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Loader from '../common/Loader';
+import { Typewriter } from 'react-simple-typewriter'
 
 const Hero = () => {
   const [carouselData, setCarouselData] = useState([]);
@@ -120,7 +121,8 @@ const Hero = () => {
         {/* Content Overlay */}
         <div className="relative flex flex-col justify-start h-full p-8">
           <h1 className="text-4xl md:text-6xl font-bold">
-            {carouselData[currentIndex].message}
+          {[carouselData[currentIndex].message]}
+
           </h1>
           <p className="max-w-lg text-gray-300 text-sm md:text-base mt-4">
             {carouselData[currentIndex].paragraph}

@@ -6,10 +6,11 @@ import SignUp from '../pages/SignUp';
 import Forget from '../pages/Forget';
 import Loading from '../components/common/Loading';
 import ShareTip from '../pages/ShareTip';
-import ExploreGardeners from '../pages/ExploreGardeners'
-import BrowseTips from '../pages/BrowseTips'
-import MyTips from '../pages/MyTips'
+import ExploreGardeners from '../pages/ExploreGardeners';
+import BrowseTips from '../pages/BrowseTips';
+import MyTips from '../pages/MyTips';
 import Update from '../pages/Update';
+import TipDetails from '../pages/TipDetails';
 
 export let router = createBrowserRouter([
   {
@@ -48,16 +49,23 @@ export let router = createBrowserRouter([
       },
       {
         path: 'share-a-garden-tip',
-        Component: ShareTip
+        Component: ShareTip,
       },
       {
         path: 'my-tips',
-        Component: MyTips
+        Component: MyTips,
       },
       {
         path: 'update-tip/:id',
-        Component: Update
-      }
+        Component: Update,
+      },
+      {
+        path: 'tip-details/:id',
+        Component: TipDetails,
+        loader: async ({ params }) =>
+          fetch(`http://localhost:3000/tip/${params.id}`),
+        hydrateFallbackElement: <Loading />,
+      },
     ],
   },
 ]);

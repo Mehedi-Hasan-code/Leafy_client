@@ -1,18 +1,40 @@
 import { Link, NavLink } from 'react-router-dom';
 import Links from './Links';
 import { CircleUser } from 'lucide-react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { FaLeaf } from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [showLogout, setShowLogout] = useState(false);
+
+  // Close logout menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showLogout && !event.target.closest('.profile-container')) {
+        setShowLogout(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showLogout]);
+
   const handleSignOut = () => {
     signOutUser()
       .then(() => toast.success('LogOut successful'))
       .catch((err) => console.log(err.message));
   };
+
+  const toggleLogout = (e) => {
+    e.stopPropagation();
+    setShowLogout(!showLogout);
+  };
+
   return (
     <div className="flex justify-between items-center p-0 w-11/12 mx-auto mt-4">
       {/* nav start */}
@@ -43,7 +65,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="space-x-2 lg:space-x-1 hidden lg:block">
-          <FaLeaf fill='green' className="inline" />
+          <FaLeaf fill="green" className="inline" />
           <span className="font-bold text-green-700">LEAFY</span>
         </Link>
       </div>
@@ -54,25 +76,45 @@ const Navbar = () => {
         </ul>
       </div>
       {/* nav end */}
-      <div className="px-3 py-3 bg-white rounded-full">
+      <div className="px-3 py-3 bg-white rounded-full relative">
         {user ? (
           <div className="flex items-center gap-2">
-            <div>
+            <div className="profile-container">
               {user.photoURL ? (
-                <img
-                  className="w-[34px] h-[34px] rounded-full object-cover"
-                  src={user.photoURL}
-                />
+                <div>
+                  <img
+                    className="w-[34px] h-[34px] rounded-full object-cover cursor-pointer"
+                    src={user.photoURL}
+                    onClick={toggleLogout}
+                    title={user.displayName || 'User'}
+                  />
+                  {showLogout && (
+                    <button
+                      onClick={handleSignOut}
+                      className="absolute left-[50%] -translate-x-[50%] bottom-0 translate-y-[105%] mt-2 shadow-lg rounded-lg px-4 py-2 text-sm hover:bg-white hover:text-green-600 font-bold text-white bg-green-600"
+                    >
+                      Logout
+                    </button>
+                  )}
+                </div>
               ) : (
-                <div className="bg-emerald-400 p-1 rounded-full">
-                  <CircleUser size={28} className="text-white" />{' '}
+                <div
+                  className="bg-emerald-400 p-1 rounded-full cursor-pointer"
+                  onClick={toggleLogout}
+                  title={user.displayName || 'User'}
+                >
+                  <CircleUser size={28} className="text-white" />
+                  {showLogout && (
+                    <button
+                      onClick={handleSignOut}
+                      className="absolute left-[50%] -translate-x-[50%] bottom-0 translate-y-[105%] mt-2 shadow-lg rounded-lg px-4 py-2 text-sm hover:bg-white hover:text-green-600 font-bold text-white bg-green-600"
+                    >
+                      Logout
+                    </button>
+                  )}
                 </div>
               )}
             </div>
-            {/*  */}
-            <button onClick={handleSignOut} className="btn hidden">
-              LogOut
-            </button>
           </div>
         ) : (
           <div className="flex gap-4">

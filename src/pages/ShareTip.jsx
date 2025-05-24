@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import Loader from '../components/common/Loader';
+import { toast } from 'react-toastify';
 const ShareTip = () => {
   const { user } = useContext(AuthContext);
+  
   // Function to get date
   const getDate = (date) => {
     const months = [
@@ -23,9 +26,11 @@ const ShareTip = () => {
     const year = date.getFullYear();
     return `${day} ${month}, ${year}`;
   };
+  const [showLoader, setShowLoader] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowLoader(true)
     const currentDate = getDate(new Date());
     const form = e.target;
     const formData = new FormData(form);
@@ -45,7 +50,15 @@ const ShareTip = () => {
       body: JSON.stringify(tipData)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      if(data.insertedId){
+        toast.success('Tip Shared Successful')
+      } else{
+        toast.error('Tip Shared Failed')
+      }
+    })
+    .catch(err => console.log(err))
+    .finally(() => setShowLoader(false))
   };
 
   return (
@@ -177,7 +190,10 @@ const ShareTip = () => {
             </fieldset>
 
             <button className="btn sm:col-span-2" type="submit">
-              Submit
+              {
+                showLoader ? <Loader />:'Submit'
+              }
+              
             </button>
           </div>
         </form>
