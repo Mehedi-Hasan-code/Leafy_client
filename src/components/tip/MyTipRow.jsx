@@ -1,7 +1,10 @@
-import React from 'react';
 import { Eye } from 'lucide-react';
-const TipRow = ({tip}) => {
-  const {image, title, date, category, difficulty} = tip
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const MyTipRow = ({ tip }) => {
+  const navigate = useNavigate()
+  const { image, title, date, category, difficulty, availability, _id } = tip;
   return (
     <tr>
       <td>
@@ -17,13 +20,17 @@ const TipRow = ({tip}) => {
           </div>
         </div>
       </td>
+      <td>{availability}</td>
       <td>{category}</td>
       <td>{difficulty}</td>
       <th>
-        <button className="btn"><Eye /></button>
+        <div className="join join-vertical space-y-1">
+          <button className="btn btn-sm join-item" onClick={() => navigate(`/update-tip/${_id}`)} >Update</button>
+          <button className="btn btn-sm join-item">Delete</button>
+        </div>
       </th>
     </tr>
   );
 };
 
-export default TipRow;
+export default MyTipRow;

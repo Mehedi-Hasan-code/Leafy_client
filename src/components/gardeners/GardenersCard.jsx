@@ -14,7 +14,6 @@ const GardenersCard = ({ gardener }) => {
     location,
     total_shared_tips,
   } = gardener;
-  console.log(experiences);
   return (
     <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-sm w-full transform hover:scale-105 transition-transform duration-300 flex flex-col">
       {/* Header Section */}

@@ -9,6 +9,7 @@ import ShareTip from '../pages/ShareTip';
 import ExploreGardeners from '../pages/ExploreGardeners'
 import BrowseTips from '../pages/BrowseTips'
 import MyTips from '../pages/MyTips'
+import Update from '../pages/Update';
 
 export let router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export let router = createBrowserRouter([
       {
         path: 'my-tips',
         Component: MyTips
+      },
+      {
+        path: 'update-tip/:id',
+        Component: Update
       }
     ],
   },
