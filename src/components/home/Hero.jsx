@@ -57,7 +57,6 @@ const Hero = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching carousel data:', error);
         setIsLoading(false);
       });
   }, []);

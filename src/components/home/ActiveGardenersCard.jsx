@@ -7,7 +7,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const ActiveGardenersCard = ({ gardener }) => {
   const { name, image, expert_in } = gardener;
   return (
-    <div className="h-full flex flex-col border-2 border-green-100 rounded-2xl overflow-hidden p-4 sm:p-6 bg-white shadow-md hover:shadow-xl transition-all duration-300 hover:border-green-300 hover:-translate-y-1 hover:bg-green-50/30">
+    <div className="h-full flex flex-col border-2 border-green-100 rounded-2xl overflow-hidden p-2 sm:p-6 bg-white shadow-md hover:shadow-xl transition-all duration-300 hover:border-green-300 hover:-translate-y-1 hover:bg-green-50/30">
       <div className="grow">
         <img
           className="w-full h-full rounded-xl object-cover hover:scale-105 transition-transform duration-300"

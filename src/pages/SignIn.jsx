@@ -89,11 +89,11 @@ const SignIn = () => {
           {/* social login */}
 
           <div className="flex items-center pt-4 space-x-1">
-            <div className="flex-1 h-px w-full dark:bg-gray-300"></div>
-            <span className="text-sm px-3 dark:text-gray-600">
+            <div className="flex-1 h-px w-full"></div>
+            <span className="text-sm px-3">
               Login with social accounts
             </span>
-            <div className="flex-1 h-px w-full dark:bg-gray-300"></div>
+            <div className="flex-1 h-px w-full"></div>
           </div>
           <div className="flex justify-center">
             {/* google */}
